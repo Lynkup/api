@@ -6,6 +6,12 @@ const index = (req, res) => {
     .catch( error => { console.error( error);});
 }
 
+const search = (req, res) => {
+    logModel.search(encodeURI(req.query.s))
+    .then( result => { res.json(result);})
+    .catch(error => { console.error(error); });
+}
+
 const show = (req, res) => {
     logModel.show(req.params.log_id)
         .then(result => {
@@ -34,6 +40,7 @@ const destroy = (req, res) => {
 
 module.exports = {
     index,
+    search,
     show,
     create,
     update,

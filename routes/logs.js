@@ -3,6 +3,7 @@ const router = express.Router();
 const logController = require('../controllers/logs');
 
 router.get('/', logController.index);
+router.get('/search', logController.search);
 router.get('/:log_id', logController.show);
 router.post('/', logController.create);
 router.put('/:log_id', logController.update);

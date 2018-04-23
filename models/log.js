@@ -1,13 +1,57 @@
 const knex = require('../db');
-const editCodeMaker = () => {
-    return Math.random().toString(36).slice(2, 8).toUpperCase()
+//HELPER FUNCTIONS
+
+const findMatches = (queryStr, logArray) => {
+
+    let searchArray = queryStr.toLowerCase().split(' ').sort();
+    let resultsArray = [];
+    let rankAndPercentages = [];
+
+    logArray.forEach(log => {
+        let logContentArray = log.content.toLowerCase().split(' ').sort();
+        resultsArray.push(
+            results = {
+                name: log.name,
+                id: log.id,
+                length: logContentArray.length,
+                matches: 0
+            });
+        searchArray.forEach(searchWord => {
+            logContentArray.forEach(logWord => {
+                if (searchWord === logWord) {
+                    results.matches++;
+                }
+            })
+        })
+    })
+    resultsArray.forEach(result => {
+        rankAndPercentages.push(
+            stats = {
+                id: result.id,
+                name: result.name,
+                percentMatch: Math.floor(result.matches / result.length * 100),
+                rank: Math.floor(result.matches / result.length * 100 * result.matches)
+            }
+        )
+    })
+    return rankAndPercentages.sort((current, next) => { return next.rank - current.rank })
 }
 
+
+// DATABASE CALLS
 const index = () => {
     return knex('logs') // call knex on table AKA SELECT * FROM logs
         .then(rows => rows) // knex returns an array of objects, each with their respective column name and their rows. In this case "rows"
         .catch(error => { console.error(error); }); // the error catching
-};
+}
+
+const search = queryStr => {
+    return knex('logs')
+    .then(rows => {
+       console.log(findMatches(decodeURI(queryStr), rows));
+    })
+    .catch(error => { console.error(error); }); // the error catching
+}
 
 const show = log_id => {
     return knex('logs') // call knex on table AKA SELECT * FROM logs
@@ -17,7 +61,6 @@ const show = log_id => {
 }
 
 const create = ({ name, title, summary, content }) => {
-    let edit_code = editCodeMaker();
     return knex('logs') // call knex on table AKA SELECT * FROM logs
         .returning('*') // Knex returns the columns of the fields you will be putting the data into
         .insert({ name, title, summary, content, edit_code}) // it inserts the provided data
@@ -45,6 +88,7 @@ const destroy = log_id => {
 
 module.exports = {
     index,
+    search,
     show,
     create,
     update,
