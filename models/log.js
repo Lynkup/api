@@ -25,6 +25,7 @@ const findMatches = (queryStr, logArray) => {
         })
     })
     resultsArray.forEach(result => {
+        if(Math.floor((result.matches/result.length * 100) > 25)) {
         rankAndPercentages.push(
             stats = {
                 id: result.id,
@@ -32,7 +33,7 @@ const findMatches = (queryStr, logArray) => {
                 percentMatch: Math.floor(result.matches / result.length * 100),
                 rank: Math.floor(result.matches / result.length * 100 * result.matches)
             }
-        )
+        )}
     })
     return rankAndPercentages.sort((current, next) => { return next.rank - current.rank })
 }

@@ -11,7 +11,8 @@ exports.seed = function(knex, Promise) {
         { "edit_code":"1a2b3c", "title": "Student in Web Dev Class", "summary": "We meet up early before class", "name": "Thomas", "content": "yellow shirt galvanize coffee data science wawa spas"},
         { "edit_code":"098765", "title": "Fellow Student", "summary": "Making a chore app", "name": "Andrew", "content": "dog walker brown hair tattoos galvanize chores app mariya"},
         { "edit_code":"uvwxyz", "title": "Old guy in the back of class", "summary": "Making some sort of missed connections app", "name": "Mariya", "content": "andrew missed connection q2 galvanize glasses 35 analytical"},
-        { "edit_code":"robroy", "title": "One of my g79 students", "summary": "Got a cortado for him once.", "name": "Adam", "content": "cortado instructor galvanize andrew q2 missed connections"}
+        { "edit_code":"robroy", "title": "One of my g79 students", "summary": "Got a cortado for him once.", "name": "Adam", "content": "cortado instructor galvanize andrew q2 missed connections"},
+        { "edit_code": "4n8", "title": "Student at Galvanize", "summary": "We spoke briefly about how I like single-pagers", "name": "Kris", "content": "pores 4k galvanize barber dumplings" }
       ]);
     });
 };
