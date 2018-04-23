@@ -7,16 +7,14 @@ const index = (req, res) => {
 }
 
 const search = (req, res) => {
-    logModel.search(encodeURI(req.query.s))
-    .then( result => { res.json(result);})
+    logModel.search(req.query.s)
+    .then( result => {res.json(result);})
     .catch(error => { console.error(error); });
 }
 
 const show = (req, res) => {
     logModel.show(req.params.log_id)
-        .then(result => {
-            res.json(result);
-        })
+        .then(result => {res.json(result);})
         .catch(error => { console.error(error); });
 }
 

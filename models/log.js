@@ -48,7 +48,7 @@ const index = () => {
 const search = queryStr => {
     return knex('logs')
     .then(rows => {
-       console.log(findMatches(decodeURI(queryStr), rows));
+       return findMatches(decodeURI(queryStr), rows);
     })
     .catch(error => { console.error(error); }); // the error catching
 }
