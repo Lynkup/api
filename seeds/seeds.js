@@ -5,14 +5,15 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('logs').insert([
-        { "edit_code":"4n8s70", "title":"Student at Galvanize","summary":"We spoke briefly about how I like single-pagers", "name": "Susan", "content": "fish galvanize coffee ibm susan andrew glasses french press grinder"},
-        { "edit_code":"123456", "title": "Woman who works for IBM", "summary": "We chatted about my coffee grinder", "name": "Andrew", "content": "ibm coffee susan andrew galvanize one pagers"},
-        { "edit_code":"abcdef", "title": "Galvanize Instructor", "summary": "Instructor that enjoys jazz and good coffee", "name": "Andrew", "content": "adam glasses teacher instructor 'take on me' cortado random word"},
-        { "edit_code":"1a2b3c", "title": "Student in Web Dev Class", "summary": "We meet up early before class", "name": "Thomas", "content": "yellow shirt galvanize coffee data science wawa spas"},
-        { "edit_code":"098765", "title": "Fellow Student", "summary": "Making a chore app", "name": "Andrew", "content": "dog walker brown hair tattoos galvanize chores app mariya"},
-        { "edit_code":"uvwxyz", "title": "Old guy in the back of class", "summary": "Making some sort of missed connections app", "name": "Mariya", "content": "andrew missed connection q2 galvanize glasses 35 analytical"},
-        { "edit_code":"robroy", "title": "One of my g79 students", "summary": "Got a cortado for him once.", "name": "Adam", "content": "cortado instructor galvanize andrew q2 missed connections"},
-        { "edit_code": "4n8", "title": "Student at Galvanize", "summary": "We spoke briefly about how I like single-pagers", "name": "Kris", "content": "pores 4k galvanize barber dumplings" }
+        { "edit_code":"4n8", "name": "Susan", "content": "fish galvanize coffee ibm susan andrew glasses french press grinder"},
+        { "edit_code": "123", "name": "Andrew", "twitter_id": "agwallace", "linkedin_id": "agwallace", "instagram_id": "feigningfigure", "content": "ibm coffee susan andrew galvanize one pagers"},
+        { "edit_code": "abc", "name": "Andrew", "facebook_id": "andrew.g.wallace", "twitter_id": "agwallace", "instagram_id": "feigningfigure", "content": "adam glasses teacher instructor 'take on me' cortado random word"},
+        { "edit_code":"1a2", "name": "Thomas", "content": "yellow shirt galvanize coffee data science wawa spas"},
+        { "edit_code": "098", "name": "Andrew", "facebook_id": "andrew.g.wallace", "twitter_id": "agwallace", "linkedin_id": "agwallace", "content": "dog walker brown hair tattoos galvanize chores app mariya"},
+        { "edit_code":"uvw", "name": "Mariya", "content": "andrew missed connection q2 galvanize glasses 35 analytical"},
+        { "edit_code":"roby", "name": "Adam", "content": "cortado instructor galvanize andrew q2 missed connections"},
+        { "edit_code": "s70", "name": "Kris", "content": "pores 4k galvanize barber dumplings" },
+        { "edit_code": "3d8", "name": "Tim", "content": "201 galvanize class student blue shirt trivia night brown hair coffee" }
       ]);
     });
 };
