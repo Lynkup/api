@@ -5,7 +5,7 @@ const findMatches = (queryStr, logArray) => {
 
     let searchArray = queryStr.toLowerCase().split(' ').sort();
     let resultsArray = [];
-    let rankAndPercentages = [];
+    let matchResults = [];
 
     logArray.forEach(log => {
         let logContentArray = log.content.toLowerCase().split(' ').sort();
@@ -14,30 +14,33 @@ const findMatches = (queryStr, logArray) => {
                 name: log.name,
                 id: log.id,
                 length: logContentArray.length,
-                matches: 0
+                matches: 0,
+                matched_words: []
             });
         searchArray.forEach(searchWord => {
             logContentArray.forEach(logWord => {
                 if (searchWord === logWord) {
                     results.matches++;
+                    results.matched_words.push(searchWord);
                 }
             })
         })
     })
     resultsArray.forEach(result => {
-        if(Math.floor((result.matches/result.length * 100) > 0)) {
-        rankAndPercentages.push(
-            stats = {
-                id: result.id,
-                name: result.name,
-                percentMatch: Math.floor(result.matches / result.length * 100),
-                rank: Math.floor(result.matches / result.length * 100 * result.matches)
-            }
-        )}
+        if (Math.floor((result.matches / result.length * 100) > 0)) {
+            matchResults.push(
+                stats = {
+                    id: result.id,
+                    name: result.name,
+                    percentMatch: Math.floor(result.matches / result.length * 100),
+                    rank: Math.floor(result.matches / result.length * 100 * result.matches),
+                    matched_words: result.matched_words
+                }
+            )
+        }
     })
-    return rankAndPercentages.sort((current, next) => { return next.rank - current.rank })
+    return matchResults.sort((current, next) => { return next.rank - current.rank })
 }
-
 
 // DATABASE CALLS
 const index = () => {
