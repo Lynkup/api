@@ -64,10 +64,10 @@ const show = log_id => {
         .catch(error => { console.error(error); })
 }
 
-const create = ({ name, title, summary, content }) => {
+const create = ({ name, content, facebook_id, twitter_id, instagram_id, linkedin_id, edit_code }) => {
     return knex('logs') // call knex on table AKA SELECT * FROM logs
         .returning('*') // Knex returns the columns of the fields you will be putting the data into
-        .insert({ name, title, summary, content, edit_code}) // it inserts the provided data
+        .insert({ name, content, facebook_id, twitter_id, instagram_id, linkedin_id, edit_code }) // it inserts the provided data
         .then(row => row[0]) // Returns the created record
         .catch(error => { console.error(error); });
 }
