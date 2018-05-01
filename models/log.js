@@ -3,12 +3,12 @@ const knex = require('../db');
 
 const findMatches = (queryStr, logArray) => {
 
-    let searchArray = queryStr.toLowerCase().split(' ').sort();
+    let searchArray = queryStr.toLowerCase().split(/[,\s]\s*(?=(?:[^"]*"[^"]*")*[^"]*$)/g).sort();
     let resultsArray = [];
     let matchResults = [];
 
     logArray.forEach(log => {
-        let logContentArray = log.content.toLowerCase().split(' ').sort();
+        let logContentArray = log.content.toLowerCase().split(/[,\s]\s*(?=(?:[^"]*"[^"]*")*[^"]*$)/g).sort();
         resultsArray.push(
             results = {
                 name: log.name,
@@ -34,7 +34,7 @@ const findMatches = (queryStr, logArray) => {
                     name: result.name,
                     percentMatch: Math.floor(result.matches / result.length * 100),
                     rank: Math.floor(result.matches / result.length * 100 * result.matches),
-                    matched_words: result.matched_words
+                    matched_words: results.matched_words.length
                 }
             )
         }
