@@ -9,14 +9,14 @@ const findMatches = (queryStr, logArray) => {
 
     logArray.forEach(log => {
         let logContentArray = log.content.toLowerCase().split(/[,\s]\s*(?=(?:[^"]*"[^"]*")*[^"]*$)/g).sort();
-        resultsArray.push(
-            results = {
-                name: log.name,
-                id: log.id,
-                length: logContentArray.length,
-                matches: 0,
-                matched_words: []
-            });
+        const results = {
+            name: log.name,
+            id: log.id,
+            length: logContentArray.length,
+            matches: 0,
+            matched_words: []
+        }
+        resultsArray.push(results);
         searchArray.forEach(searchWord => {
             logContentArray.forEach(logWord => {
                 if (searchWord === logWord) {
@@ -34,7 +34,7 @@ const findMatches = (queryStr, logArray) => {
                     name: result.name,
                     percentMatch: Math.floor(result.matches / result.length * 100),
                     rank: Math.floor(result.matches / result.length * 100 * result.matches),
-                    matched_words: results.matched_words
+                    matched_words: result.matched_words
                 }
             )
         }
