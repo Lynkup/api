@@ -35,6 +35,7 @@ const findMatches = (queryStr, logArray) => {
                     percentMatch: Math.floor(result.matches / result.length * 100),
                     rank: Math.floor(result.matches / result.length * 100 * result.matches),
                     matched_words: result.matched_words
+
                 }
             )
         }
